@@ -215,7 +215,16 @@ class OcrExtractorNode(BaseNode):
         super().__init__()
 
     def execute(self, state):
-        import pytesseract
+        try:
+            import pytesseract
+        except ImportError:
+            return {
+                "raw_content": (
+                    "[OCR 기능을 사용할 수 없습니다. "
+                    "Tesseract와 pytesseract가 설치된 로컬 환경에서만 지원됩니다.]"
+                )
+            }
+
         from PIL import Image
 
         img = Image.open(state["file_path"])
