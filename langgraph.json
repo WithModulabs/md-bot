@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "md_converter": "./casts/md_converter/graph.py:md_converter_graph"
+  },
+  "env": ".env"
+}
